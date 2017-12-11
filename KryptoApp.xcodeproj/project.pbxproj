@@ -13,6 +13,7 @@
 		9309BBEA1FDDF8A100667884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9309BBE81FDDF8A100667884 /* Main.storyboard */; };
 		9309BBEC1FDDF8A100667884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9309BBEB1FDDF8A100667884 /* Assets.xcassets */; };
 		9309BBEF1FDDF8A100667884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9309BBED1FDDF8A100667884 /* LaunchScreen.storyboard */; };
+		93593F741FDE133300AAA864 /* AliceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93593F731FDE133300AAA864 /* AliceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9309BBEB1FDDF8A100667884 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9309BBEE1FDDF8A100667884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9309BBF01FDDF8A200667884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93593F731FDE133300AAA864 /* AliceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliceViewController.swift; sourceTree = "<group>"; };
 		9B99B61F8B4B74313ED6928D /* Pods-KryptoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KryptoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KryptoApp/Pods-KryptoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E1F6EB7B4EE53D7F279AE51F /* Pods-KryptoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KryptoApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-KryptoApp/Pods-KryptoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 			children = (
 				9309BBE41FDDF8A100667884 /* AppDelegate.swift */,
 				9309BBE61FDDF8A100667884 /* ViewController.swift */,
+				93593F731FDE133300AAA864 /* AliceViewController.swift */,
 				9309BBE81FDDF8A100667884 /* Main.storyboard */,
 				9309BBEB1FDDF8A100667884 /* Assets.xcassets */,
 				9309BBED1FDDF8A100667884 /* LaunchScreen.storyboard */,
@@ -213,6 +216,7 @@
 			files = (
 				9309BBE71FDDF8A100667884 /* ViewController.swift in Sources */,
 				9309BBE51FDDF8A100667884 /* AppDelegate.swift in Sources */,
+				93593F741FDE133300AAA864 /* AliceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +360,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KopytovSD.KryptoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -372,6 +377,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KopytovSD.KryptoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

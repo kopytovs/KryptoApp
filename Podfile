@@ -11,4 +11,5 @@ target 'KryptoApp' do
   pod 'Alamofire', '~> 4.5'
   pod 'JVFloatLabeledTextField'
   pod 'IQKeyboardManagerSwift', '5.0.0'
+
 end

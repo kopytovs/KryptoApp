@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AliceViewController.swift
 //  KryptoApp
 //
 //  Created by Sergey Kopytov on 11.12.2017.
@@ -10,8 +10,8 @@ import UIKit
 import JVFloatLabeledTextField
 import SwiftyRSA
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class AliceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     @IBOutlet weak var generationButton: UIButton!
     @IBOutlet weak var closeKey: JVFloatLabeledTextField!
     @IBOutlet weak var openKey: JVFloatLabeledTextField!
@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var kryptoButton: UIButton!
     @IBOutlet weak var encryptMsg: JVFloatLabeledTextField!
-
+    
     var pubKey:PublicKey?
     var priKey:PrivateKey?
     var abra:EncryptedMessage?
@@ -37,9 +37,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (!abrakadabra.isEmpty){
             decode()
         }
-        self.kryptoButton.isEnabled = (AlicePublicKey != nil) ? true : false
+        self.kryptoButton.isEnabled = (BobPublicKey != nil) ? true : false
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,7 +48,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     private func decode(){
         let encrypted = try! EncryptedMessage(base64Encoded: (abrakadabra.last?.base64String)!)
-        let clear = try! encrypted.decrypted(with: BobPrivateKey!, padding: .PKCS1)
+        let clear = try! encrypted.decrypted(with: AlicePrivateKey!, padding: .PKCS1)
         let msg = try! clear.string(encoding: String.Encoding.utf8)
         if (messages.isEmpty == true){
             messages.append("\(msg)")
@@ -61,28 +62,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func sendMessage(_ sender: Any) {
         self.sendMessageButton.isEnabled = false
-        persons.append("Боб:")
+        persons.append("Алиса:")
         abrakadabra.append(abra!)
     }
     
     @IBAction func generateKeys(_ sender: Any) {
         pubKey = try! PublicKey(pemEncoded: pemPub)
         priKey = try! PrivateKey(pemEncoded: pemPri)
-        BobPublicKey = pubKey
-        BobPrivateKey = priKey
+        AlicePublicKey = pubKey
+        AlicePrivateKey = priKey
         let pub = try! pubKey?.pemString()
         let pri = try! priKey?.pemString()
         self.openKey.text = "\(pub!)"
         self.closeKey.text = "\(pri!)"
-        
     }
     @IBAction func kryptoMsg(_ sender: Any) {
         let clear = try! ClearMessage(string: self.messageField.text!, using: .utf8)
-        let encrypted = try! clear.encrypted(with: AlicePublicKey!, padding: .PKCS1)
+        let encrypted = try! clear.encrypted(with: BobPublicKey!, padding: .PKCS1)
         self.encryptMsg.text = encrypted.base64String
         self.abra = encrypted
         self.sendMessageButton.isEnabled = true
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
@@ -94,6 +95,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.detailTextLabel?.text = messages[indexPath.row]
         return cell
     }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
-
